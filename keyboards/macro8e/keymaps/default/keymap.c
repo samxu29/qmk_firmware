@@ -35,16 +35,16 @@ bool dip_switch_update_user(uint8_t index, bool active) {
     if (index == 0 && active) {
         tap_code(KC_K);
     }
-    return true;
+    return false;
 }
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (clockwise) {
-        tap_code(KC_AUDIO_VOL_UP);
+        tap_code(KC_RIGHT);
     } else {
-        tap_code(KC_AUDIO_VOL_DOWN);
+        tap_code(KC_LEFT);
     }
-    return true;
+    return false; 
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
