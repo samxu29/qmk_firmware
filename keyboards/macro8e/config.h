@@ -10,8 +10,8 @@
 #define DIODE_DIRECTION COL2ROW
 
 // Encoder pins
-#define ENCODER_A_PINS { D7 }  // DT pin
-#define ENCODER_B_PINS { D6 }  // CLK pin
+#define ENCODER_A_PINS { D6 }  // DT pin
+#define ENCODER_B_PINS { D7 }  // CLK pin
 #define ENCODER_RESOLUTION 4
 
 #ifdef OLED_ENABLE
