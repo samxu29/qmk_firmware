@@ -10,7 +10,7 @@ enum layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_MEDIA] = LAYOUT(
         KC_LCBR,    KC_L,       KC_COLN,    KC_RCBR,
-        KC_RABK,    KC_LEFT,    KC_RIGHT,   KC_LABK
+        KC_LABK,    KC_LEFT,    KC_RIGHT,   KC_RABK
     ),
 
     [_MODKEY] = LAYOUT(
