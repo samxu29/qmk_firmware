@@ -2,8 +2,10 @@
 
 #define MATRIX_ROWS 2
 #define MATRIX_COLS 4
-#define MATRIX_ROW_PINS { B5, B4 }
-#define MATRIX_COL_PINS { F4, F5, F6, F7 }
+// #define MATRIX_ROW_PINS { B5, B4 }
+// #define MATRIX_COL_PINS { F4, F5, F6, F7 }
+#define MATRIX_ROW_PINS { B4, B5 }
+#define MATRIX_COL_PINS { F7, F6, F5, F4 }
 #define DIP_SWITCH_PINS { D4 }  // Independent encoder switch
 
 #define DIODE_DIRECTION COL2ROW

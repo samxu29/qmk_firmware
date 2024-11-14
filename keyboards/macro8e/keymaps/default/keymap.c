@@ -3,27 +3,26 @@
 #include QMK_KEYBOARD_H
 
 enum layers {
-    _BASE,
     _MEDIA,
+    _MODKEY,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_BASE] = LAYOUT(
-        KC_DOWN,     KC_SPC,    KC_LALT,    KC_LCTL,
-        KC_UP,       KC_BSPC,   KC_ENT,     KC_LSFT
+    [_MEDIA] = LAYOUT(
+        KC_LCBR,    KC_L,       KC_COLN,    KC_RCBR,
+        KC_RABK,    KC_LEFT,    KC_RIGHT,   KC_LABK
     ),
 
-    [_MEDIA] = LAYOUT(
-        KC_COLN,    KC_RABK,    KC_LABK,    KC_L,
-        KC_RCBR,    KC_RIGHT,   KC_LEFT,    KC_LCBR
-
+    [_MODKEY] = LAYOUT(
+        KC_ESC,     KC_SPC,     KC_DEL,     KC_BSPC,
+        KC_LSFT,    KC_LCTL,    KC_LALT,    KC_ENT
     ),
 };
 
 bool dip_switch_update_user(uint8_t index, bool active) {
     
     if (index == 0 && active) {
-        layer_invert(_MEDIA);
+        layer_invert(_MODKEY);
     }
     return false;
 }
@@ -38,7 +37,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 }
 // bool encoder_update_user(uint8_t index, bool clockwise) {
 //     switch (get_highest_layer(layer_state)) {
-//         case _BASE:
+//         case _MEDIA:
 //             if (clockwise) {
 //                 tap_code(KC_RIGHT);
 //             } else {
@@ -46,7 +45,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 //             }
 //             break;
             
-//         case _MEDIA:
+//         case _MODKEY:
 //             if (clockwise) {
 //                 tap_code(KC_AUDIO_VOL_UP);
 //             } else {
@@ -76,13 +75,13 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
     // Turn on LED for current layer
     switch (get_highest_layer(state)) {
-        case _BASE:
-            writePin(LED_2_PIN, 1);
-            writePin(LED_3_PIN, 1);
-            break;
         case _MEDIA:
             writePin(LED_1_PIN, 1);
             writePin(LED_4_PIN, 1);
+            break;
+        case _MODKEY:
+            writePin(LED_2_PIN, 1);
+            writePin(LED_3_PIN, 1);
             break;
     }
     return state;
@@ -108,11 +107,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         oled_write_ln_P(PSTR("LAYER:"), false);
 
         switch (get_highest_layer(layer_state)) {
-            case _BASE:
-                oled_write_P(PSTR("\t BASE \n\n\n"), false);
-                break;
             case _MEDIA:
-                oled_write_P(PSTR("\t MEDIA \n\n\n"), false);
+                oled_write_P(PSTR(" \t MEDIA\t \n\n\n"), false);
+                break;
+            case _MODKEY:
+                oled_write_P(PSTR(" \t MODKEY\t \n\n\n"), false);
                 break;
         }
 
