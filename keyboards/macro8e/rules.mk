@@ -18,4 +18,4 @@ ENCODER_ENABLE = yes       # Enable encoder support
 DIP_SWITCH_ENABLE = yes
 OLED_ENABLE = yes          # Enable OLED display
 OLED_DRIVER = ssd1306      # OLED driver
-VIA_ENABLE = yes           # Enable VIA support
+VIA_ENABLE = no           # Enable VIA support

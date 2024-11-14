@@ -13,8 +13,18 @@
 #define ENCODER_B_PINS { D7 } // CLK pin
 #define ENCODER_RESOLUTION 4
 
+// LED pins
+#define LED_1_PIN B6
+#define LED_2_PIN B2
+#define LED_3_PIN B3
+#define LED_4_PIN B1
+
+// Set all LEDs as output and low by default
+#define LED_PIN_INIT { setPinOutput(LED_1_PIN); setPinOutput(LED_2_PIN); setPinOutput(LED_3_PIN); setPinOutput(LED_4_PIN);}
+
 #ifdef OLED_ENABLE
     #define OLED_DISPLAY_128X64
     #define OLED_TIMEOUT 60000
     #define OLED_TRANSPORT_DRIVER i2c
+
 #endif
